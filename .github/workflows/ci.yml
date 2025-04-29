@@ -7,6 +7,9 @@ on:
 
 jobs:
   test-accessibility:
+    permissions: 
+      contents: write
+      pages: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -24,9 +27,6 @@ jobs:
         run: axe alice4951.github.io/Course-Espace/ --exit
 
       - name: Deploy to GitHub Pages
-        permissions: 
-          contents: write
-          pages: write
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
